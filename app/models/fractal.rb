@@ -1,0 +1,2 @@
+class Fractal < ApplicationRecord
+end
