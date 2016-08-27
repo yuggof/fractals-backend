@@ -4,12 +4,20 @@ services:
     image: postgres:9.5.4
   redis:
     image: redis:3.2.3
-  app:
+  rails:
     build:
       context: .
       dockerfile: Dockerfile.dev
     volumes:
       - .:/home/fractals/app
+    command: rails s -b 0.0.0.0
+  sidekiq:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/home/fractals/app
+    command: sidekiq
   nginx:
     image: nginx:1.11.3
     volumes:
