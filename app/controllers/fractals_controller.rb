@@ -3,6 +3,8 @@ class FractalsController < ApplicationController
     f = Fractal.new(create_params)
 
     if f.save
+      GenerateFractalJob.perform_later(f.id)
+
       render json: {id: f.id}, status: 201
     else
       render json: f.errors, status: 422
