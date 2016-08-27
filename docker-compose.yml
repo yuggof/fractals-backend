@@ -1,8 +1,16 @@
 version: '2'
 services:
+  postgres:
+    image: postgres:9.5.4
   app:
     build:
       context: .
       dockerfile: Dockerfile.dev
     volumes:
       - .:/home/fractals/app
+  nginx:
+    image: nginx:1.11.3
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
