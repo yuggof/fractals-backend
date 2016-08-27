@@ -38,6 +38,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 ###
 
 gem 'pg'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'rspec-rails'
