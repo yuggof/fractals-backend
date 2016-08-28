@@ -22,3 +22,4 @@
 
 *.swp
 bin/generate-fractal
+fractals/*.png
