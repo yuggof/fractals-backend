@@ -14,6 +14,6 @@ class FractalsController < ApplicationController
   private
 
   def create_params
-    params.permit(:c, :z)
+    params.permit(:z)
   end
 end
