@@ -6,8 +6,9 @@ RUN adduser --disabled-password --gecos '' fractals
 
 WORKDIR /home/fractals/app
 COPY . .
-RUN ./bin/download-generate-fractal-binary
 RUN chown -R fractals:fractals .
 
 USER fractals
 RUN bundle
+
+ENTRYPOINT ["./bin/docker-entrypoint.sh"]
