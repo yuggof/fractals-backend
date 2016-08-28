@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+require 'net/http'
+require 'json'
+require 'open-uri'
+
+u = URI('https://api.github.com/repos/yuggof/fractals-generator/releases')
+res = Net::HTTP.get(u)
+
+srel = JSON.parse(res).select { |rel| rel['tag_name'].start_with?('staging') }
+lsrel = srel.sort_by { |rel| rel['tag_name'] }.last
+
+open(lsrel['assets'].first['browser_download_url']) do |s|
+  open(File.join(__dir__, 'generate-fractal'), 'w', 0700) do |d|
+    d.write(s.read)
+  end
+end
