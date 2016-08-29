@@ -1,0 +1,12 @@
+---
+machine:
+  services:
+    - docker
+
+dependancies:
+  override:
+    - pip install docker-compose
+
+test:
+  override:
+    - docker-compose up -d
