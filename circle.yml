@@ -14,5 +14,10 @@ database:
     - echo
 
 test:
-  override:
+  pre:
+    - docker-compose build
     - docker-compose up -d
+    - docker-compose run rails rake db:create
+    - docker-compose run rails rake db:migrate
+  override:
+    - docker-compose run rails rspec
