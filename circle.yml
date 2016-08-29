@@ -17,7 +17,7 @@ test:
   pre:
     - docker-compose build
     - docker-compose up -d
-    - docker-compose run rails rake db:create
+    - for i in {1..5}; do docker-compose run rails rake db:create && break || sleep 1; done
     - docker-compose run rails rake db:migrate
   override:
     - docker-compose run rails rspec
