@@ -3,7 +3,7 @@ machine:
   services:
     - docker
 
-dependancies:
+dependencies:
   override:
     - pip install docker-compose
 
