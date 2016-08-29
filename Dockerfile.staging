@@ -1,3 +1,20 @@
 FROM ruby:2.3.1
 
+ENV RAILS_ENV staging
+
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs
+
 RUN adduser --disabled-password --gecos '' fractals
+WORKDIR /home/fractals/app
+
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install --without development test
+
+COPY . .
+RUN chown -R fractals:fractals .
+
+USER fractals
+
+CMD ["rails", "s", "-b", "0.0.0.0"]
