@@ -9,6 +9,7 @@ dependencies:
 
 database:
   override:
+    - echo
 
 test:
   override:
