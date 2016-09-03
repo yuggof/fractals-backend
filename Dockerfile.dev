@@ -3,8 +3,8 @@ FROM ruby:2.3.1
 RUN apt-get update && apt-get install -y less
 
 RUN adduser --disabled-password --gecos '' fractals
-
 WORKDIR /home/fractals/app
+
 COPY . .
 RUN chown -R fractals:fractals .
 
