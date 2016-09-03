@@ -2,9 +2,6 @@ FROM ruby:2.3.1
 
 ENV RAILS_ENV production
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get install -y nodejs
-
 RUN adduser --disabled-password --gecos '' fractals
 WORKDIR /home/fractals/app
 
