@@ -12,6 +12,9 @@ machine:
 
 dependencies:
   override:
+    - echo $DOCKER_USER
+    - echo $DOCKER_PASS
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - pip install docker-compose
 
 database:
