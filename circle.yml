@@ -2,7 +2,7 @@
 general:
   branches:
     only:
-      - staging
+      - build
 
 machine:
   pre:
@@ -28,8 +28,8 @@ test:
     - docker-compose run rails rspec
 
 deployment:
-  staging:
-    branch: staging
+  build:
+    branch: build
     commands:
       - docker build -f Dockerfile.prod -t $CIRCLE_BUILD_NUM .
       - docker login -u $DOCKER_USER -p $DOCKER_PASS
