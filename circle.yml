@@ -12,11 +12,6 @@ machine:
 
 dependencies:
   override:
-    - echo $DOCKER_USER
-    - echo $DOCKER_PASS
-    - docker login --help
-    - docker login -h
-    - docker login -u $DOCKER_USER -p $DOCKER_PASS
     - pip install docker-compose
 
 database:
@@ -37,5 +32,5 @@ deployment:
     branch: build
     commands:
       - docker build -f Dockerfile.prod -t yuggof/fractals-backend:$CIRCLE_BUILD_NUM .
-      - docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - docker login -u $DOCKER_USER -e $DOCKER_EMAIL -p $DOCKER_PASS
       - docker push yuggof/fractals-backend:$CIRCLE_BUILD_NUM
